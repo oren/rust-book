@@ -1,7 +1,6 @@
 use rand::Rng;
 use std::cmp::Ordering;
 use std::io;
-// io library in std library
 
 fn main() {
     println!("Guess the number!");
@@ -11,13 +10,18 @@ fn main() {
     loop {
         println!("Please input your guess.");
 
+        // std::string::String - a UTF-8 encoded,
+        // std is a Crate. string is a Module. String is a Struct
         let mut guess = String::new();
 
-        // std::io::Stdin - a Structure. A handle to the standard input stream of a process. Implements the Read trait.
+        // std::io::stdin - function that constructs a new handle to the standard input of the current process.
+        // returns Struct std::io::Stdin
+        // std is a Crate. io is a Module. stdin is a function
         io::stdin()
             .read_line(&mut guess)
             .expect("Failed to read line");
 
+        // parse convert string to a number
         let guess: u32 = match guess.trim().parse() {
             Ok(num) => num,
             Err(_) => continue,
@@ -35,4 +39,3 @@ fn main() {
         }
     }
 }
-
